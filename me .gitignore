@@ -1,0 +1,5 @@
+secret.key
+*.enc
+decrypted_*
+__pycache__/
+.vscode/
