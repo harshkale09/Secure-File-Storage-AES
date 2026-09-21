@@ -4,21 +4,13 @@ A lightweight, CLI-based secure file vault built in Python. This system provides
 
 ---
 
-## Technical Architecture & Security Flowchart
+## Key Features
 
-```mermaid
-graph TD
-    A[Original File: secret.txt] --> B[Calculate SHA-256 Hash]
-    B --> C[Store Hash in metadata.json]
-    A --> D[AES-256 Encryption Engine]
-    D --> E[Encrypted File: secret.txt.enc]
-    
-    subgraph Decryption & Verification
-        E --> F[AES-256 Decryption Engine]
-        F --> G[Decrypted File: decrypted_secret.txt]
-        G --> H[Re-calculate SHA-256 Hash]
-        C --> I{Compare Hashes}
-        H --> I
-        I -- Match --> J[VERIFIED: File Untampered]
-        I -- Mismatch --> K[CRITICAL: Tampering Detected]
-    end
+- **AES-256 Cryptographic Protection**: Uses authenticated symmetric encryption to secure confidential files.
+- **SHA-256 Integrity Verification**: Calculates and verifies cryptographic checksums to detect file alteration/tampering.
+- **Structured Metadata Management**: Logs file names, SHA-256 hashes, and timestamp records in a local JSON database.
+- **Key Security & Management**: Automatically manages symmetric encryption keys (`secret.key`).
+
+---
+
+## Technical Architecture
